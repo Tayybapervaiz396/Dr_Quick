@@ -1,0 +1,199 @@
+﻿
+@{
+    ViewBag.Title = "PAppForm";
+    Layout = "~/Views/ClientDashLayout.cshtml";
+    }
+
+    <style>
+    .contr {
+        height: 40px;
+    }
+</style>
+
+<body style="background-color: rgba(81, 92, 82, 1);">
+    <div class="container" style=" background-color: #333; border-radius:5%; width:70% ; height:700%;  margin-top:8%; margin-bottom:6%">
+        <h1 style="color:white; font-family:Gabriola;margin-left:34%; margin-bottom:3%">Online Appointment</h1>
+
+        <form action="/Client/Add" method="post"  style=" margin-bottom:2%; ">
+            <fieldset id="inputs">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input id="FirstName" class="form-control contr" type="text" name="FirstName" placeholder="First Name*" required /><br />
+                    </div>
+                    <div class="col-sm-4 ">
+                        <input id="LastName" class="form-control contr" type="text" name="LastName" placeholder="Last Name*" required /><br />
+                    </div>
+                    <div class="col-sm-4 ">
+                        <input id="Email" class="form-control contr" type="text" name="Email" placeholder="Email*" required /><br />
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input class="form-control contr" id="Password" name="Password" placeholder="Password*" type="password" /><br />
+                    </div>
+                    <div class="col-sm-4 ">
+                        <input id="PhoneNo" type="text" class="form-control contr" name="PhoneNo" placeholder=" Phone No*" required /><br />
+                    </div>
+                    <div class="col-sm-4 ">
+                        <input id="Address" type="text" class="form-control contr" name="Address" placeholder="Address*" required><br />
+                        <br />
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input id="DOBirth" class="form-control contr" type="date" name="DOBirth" placeholder=" Date of Birth*" required /><br />
+                    </div>
+                    <div class="col-sm-4 ">
+                        <label style="color:white">Gender:</label>  &nbsp;<input type="radio" name="Gender" />
+                        <label style=" color:white">
+                            Female
+                        </label>
+                        <input type="radio" name="Gender" />&nbsp;<label style=" color:white"> Male</label>
+
+                    </div>
+                    <div class="col-sm-4 ">
+                        <input id="City" class="form-control contr" type="text" name="City" placeholder="City*" required /><br />
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+
+
+                        <select class=" form-control contr" id="MStatus" name="MStatus" style="width:96%; margin-left:3%">
+
+                            <option value="Martial">Martial Status</option>
+                            <option value="1">Single</option>
+                            <option value="2">Married</option>
+                        </select><br />
+                    </div>
+
+                    <div class="col-sm-4 ">
+                        <select class=" form-control contr" id="Departments" name="Departments" style="width:96%; margin-left:1%">
+
+                            <option value="Department">Choose Department</option>
+                            <option value="1">Cardiology</option>
+                            <option value="2">Dentisry</option>
+                            <option value="3">Emergency Room</option>
+                            <option value="4">Surgury</option>
+                            <option value="5">Pediatrics</option>
+                            <option value="6">Laboratory</option>
+                        </select><br />
+                    </div>
+
+                    <div class="col-sm-4">
+                        <input id="OfcNo" class="form-control contr" type="text" style="width:96%" name="OfcNo" placeholder="Office Phone No*" required /><br />
+                    </div>
+
+
+
+
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-4 " style="margin-left:-0.6%">
+
+                        <input id="GName" class="form-control contr" type="text" name="GName" style="width:96%" placeholder="Guardian Name*" required /><br />
+                    </div>
+
+
+                    <div class="col-sm-4 " style="margin-left:-0.5%">
+                        <input id="GPhoneNo" class="form-control contr" type="text" name="GPhoneNo" style="width:96%" placeholder="Guardian Phone No*" required /><br />
+                    </div>
+                    <div class="col-sm-4" style="margin-left:1%">
+                        <input id="Occupation" class="form-control contr" type="text" style="width:96%" name="Occupation" placeholder="Occupation*" required /><br />
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-4 " style="margin-left:-0.6%">
+                        <input id="CDrName" class="form-control contr" style="width:96%" type="text" name="CDrName"
+                               placeholder="Consulting Dr. Name*" required /><br />
+                    </div>
+                    <div class="col-sm-4" style="margin-left:1%">
+                        <input id="Responsible" class="form-control contr " type="text" name="Responsible" style="width:96%"
+                               placeholder="Who is financially responsible for Doctor?*" required /><br />
+                    </div>
+                    <div class="col-sm-4 " style="margin-left:-0.6%">
+                        <input id="ENo" class="form-control contr" type="text" style="width:96%" name="ENo" placeholder="Emergency No*" required /><br />
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-4 " style="margin-left:-0.5%">
+                        <input id="RelationToPatient" class="form-control contr" style="width:96%" type="text" name="RelationToPatient"
+                               placeholder="Relationship To Patient*" required /><br />
+                    </div>
+
+                </div>
+
+
+
+                <input type="submit" id="AppoSubmit" value="Register" style="margin-left:45%; width:12%; height:40px; text-align:center">
+
+
+            </fieldset>
+        </form>
+    </div>
+
+    <script lang="ja" type="text/javascript">
+        $(document).ready(function () {
+            $("#AppoSubmit").click(function () {
+                var FirstName = $("#FirsName").val();
+                var LastName = $("#LastName").val();
+                var Email = $("#Email").val();
+                var Password = $("#Password").val();
+                var PhoneNo = $("#PhoneNo").val();
+                var Address = $("#Address").val();
+                var DOBirth = $("#DOBirth").val();
+                var Gender = $("#Gender").val();3
+                var City = $("#City").val();
+                var MStatus = $("#MStatus").val();
+                var Departments = $("#Departments").val();
+                var OfcNo = $("#OfcNo").val();
+                var GName = $("#GName").val();
+                var GPhoneNo = $("#GPhoneNo").val(); 3
+                var Occupation = $("#Occupation").val();
+                var CDrName = $("#CDrName").val();
+                var esponsible = $("#Responsible").val();
+                var CRelationToPatient = $("#RelationToPatient").val();
+                
+                
+                
+                $.ajax({
+
+                    url:"http://localhost:35003/api/APPOINTMENT",
+                    type: "Post",
+                    data: JSON.stringify({
+                        FirstName: FirstName, LastName: LastName, Email: Email, Password: Password, PhoneNo: PhoneNo,
+                        Address:Address, DOBirth:DOBirth,  Gender:Gender, 
+                        City: City, MStatus: MStatus, Departments: Departments, OfcNo: OfcNo, GName: GName,
+                        GPhoneNo: GPhoneNo, Occupation: Occupation, CDrName: CDrName, Responsible: Responsible,
+                        RelationToPatient: RelationToPatient
+                    }), //{ Name: name, Address: address, DOB: dob },
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        
+                    },
+                   // error: function () { alert('error'); }
+                });
+            });
+        });
+
+
+
+    </script>
+
+
+
+
+</body>
