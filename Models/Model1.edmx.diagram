@@ -4,11 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="68ed0478dff3465bb0007d53eeed8e44" Name="Diagram1">
-        <EntityTypeShape EntityType="Database1Model.ProTable" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.RegstrTable" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.SignUpTable" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.PAppoTable" Width="1.5" PointX="6.625" PointY="0.625" IsExpanded="true" />
+      <Diagram DiagramId="68ed0478dff3465bb0007d53eeed8e44" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="Database1Model.RegstrTable" Width="1.5" PointX="1.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.SignUpTable" Width="1.5" PointX="3.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.PAppoTable" Width="1.5" PointX="5.125" PointY="0.5" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

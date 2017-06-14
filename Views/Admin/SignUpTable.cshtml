@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "SignUpTable";
     Layout = "~/Views/AdminDashLayout.cshtml";
     <link href="~/Content/TabularSheet.css" rel="stylesheet" />
@@ -10,7 +9,7 @@
     <div class="container" style=" background-color: #333; margin-left:10%; border-radius: 5%;
  width: 80%; height: 600px; margin-top: 5%; margin-bottom: 6%">
         <h1 style=" color: white;">Sign Up Table </h1>
-       
+
         <div style="position: absolute; height: 73%; width:74%; overflow: auto; ">
             <div style="height:40%;">
                 <table class="blue" style="margin-left:5%; width:160%">
@@ -31,86 +30,162 @@
                         </tr>
                     </thead>
                     <tbody>
-                   @foreach (var x in Model)
+                        @foreach (var x in Model)
                         {
-                        <tr>
+                            <tr>
 
-                            <td>@x.FirstName</td>
-                            <td>@x.LastName</td>
-                            <td>@x.Password</td>
-                            <td>@x.CPassword</td>
-                            <td>@x.Email</td>
-                            <td>@x.Address</td>
-                            <td>@x.Gender</td>
-                            <td>@x.PhoneNo</td>
-                            <td>@x.City</td>
-                            <td>@x.DOBirth</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                                        <span> Option</span>
-                                    </button>
-                                    <ul class="dropdown-menu stay-open pull-right" role="menu" style="padding: 15px; min-width: 100px;">
-                                        <li>Edit</li>
-                                        <li>Delete</li>
-                                        
-                                    </ul>
-                                </div>
-                            </td>
+                                <td>@x.FirstName</td>
+                                <td>@x.LastName</td>
+                                <td>@x.Password</td>
+                                <td>@x.CPassword</td>
+                                <td>@x.Email</td>
+                                <td>@x.Address</td>
+                                <td>@x.Gender</td>
+                                <td>@x.PhoneNo</td>
+                                <td>@x.City</td>
+                                <td>@x.DOBirth</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                            <span> Option</span>
+                                        </button>
+                                        <ul class="dropdown-menu stay-open pull-right" role="menu" style="padding: 15px; min-width: 100px;">
+                                            <li><button id="EditApi" type="submit">Update</button></li>
+                                            <li><button id="deleteApi" type="submit" onclick="deleteApi">Delete</button></li>
+                                            
 
-                        </tr>
-                   }
-                        </tbody>
+                                        </ul>
+                                    
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                  
+                    
+
+
                 </table>
+                <!--
+                    Delete Code
+                -->
+                <script>
+                    $(document).ready(function () {
+                        $("#deleteApi").click(function () {
+                            // debugger;
+                            var id = $("#Id").val();
+                            $.ajax({
+                                url: "http://localhost:35003/api/SIGNUP/ " + id,
+                                type: "Delete",
+                                success: function (data) {
+                                    alert('Deleted Successfully');
+                                    window.location.href = "/Admin/SignUpTable";
+                                },
+                                error: function (msg) { alert(msg); }
+                            });
+                        });
+                    });
+                </script>
+
+
+                <!--Edit-->
+
+                <script>
+                    $(document).ready(function () {
+                        $("#EditApi").click(function () {
+                            // debugger;
+                            var id = $("#Id").val();
+                           
+
+                            var a = $("#FirstName").val();
+                            var b = $("#LastName").val();
+                            var c = $("#Password").val();
+                            var d = $("#CPassword").val();
+                            var e = $("#Email").val();
+                            var f = $("#Address").val();
+                            var g = $("#Gender").val();
+                            var h = $("#PhoneNo").val();
+                            var i = $("#City").val();
+                            var j = $("#DOBirth").val();
+
+
+
+
+
+                            $.ajax({
+                                url: "http://localhost:35003/api/SIGNUP/",
+                                type: "Put",
+                                data: JSON.stringify({
+                                    FirstName: a, LastName: b, Password: c,
+                                    CPassword: d, Email: e, Address: f, Gender: g, PhoneNo: h,
+                                    City: i, DOBirth: j
+                                }), //{ Name: name, Address: address, DOB: dob },
+
+
+
+                                contentType: 'application/json; charset=utf-8',
+                                success: function (data) {
+                                    alert('Updated Successfully');
+                                    window.location.href = "/Main/SignUp";
+                                },
+                                error: function (msg) { alert(msg); }
+                            });
+                        });
+                    });
+                </script>
+
+
+           
 
 
 
 
             </div>
+            <!--TAble-->
 
-
-            <script>
-                ; (function ($) {
-                    $.fn.fixMe = function () {
-                        return this.each(function () {
-                            var $this = $(this),
-                               $t_fixed;
-                            function init() {
-                                $this.wrap('<div class="container" />');
-                                $t_fixed = $this.clone();
-                                $t_fixed.find("tbody").remove().end().addClass("fixed").insertBefore($this);
-                                resizeFixed();
-                            }
-                            function resizeFixed() {
-                                $t_fixed.find("th").each(function (index) {
-                                    $(this).css("width", $this.find("th").eq(index).outerWidth() + "px");
-                                });
-                            }
-                            function scrollFixed() {
-                                var offset = $(this).scrollTop(),
-                                tableOffsetTop = $this.offset().top,
-                                tableOffsetBottom = tableOffsetTop + $this.height() - $this.find("thead").height();
-                                if (offset < tableOffsetTop || offset > tableOffsetBottom)
-                                    $t_fixed.hide();
-                                else if (offset >= tableOffsetTop && offset <= tableOffsetBottom && $t_fixed.is(":hidden"))
-                                    $t_fixed.show();
-                            }
-                            $(window).resize(resizeFixed);
-                            $(window).scroll(scrollFixed);
-                            init();
-                        });
-                    };
-                })(jQuery);
-
-                $(document).ready(function () {
-                    $("table").fixMe();
-                    $(".up").click(function () {
-                        $('html, body').animate({
-                            scrollTop: 0
-                        }, 2000);
+<script>
+    ; (function ($) {
+        $.fn.fixMe = function () {
+            return this.each(function () {
+                var $this = $(this),
+                   $t_fixed;
+                function init() {
+                    $this.wrap('<div class="container" />');
+                    $t_fixed = $this.clone();
+                    $t_fixed.find("tbody").remove().end().addClass("fixed").insertBefore($this);
+                    resizeFixed();
+                }
+                function resizeFixed() {
+                    $t_fixed.find("th").each(function (index) {
+                        $(this).css("width", $this.find("th").eq(index).outerWidth() + "px");
                     });
-                });
-            </script>
+                }
+                function scrollFixed() {
+                    var offset = $(this).scrollTop(),
+                    tableOffsetTop = $this.offset().top,
+                    tableOffsetBottom = tableOffsetTop + $this.height() - $this.find("thead").height();
+                    if (offset < tableOffsetTop || offset > tableOffsetBottom)
+                        $t_fixed.hide();
+                    else if (offset >= tableOffsetTop && offset <= tableOffsetBottom && $t_fixed.is(":hidden"))
+                        $t_fixed.show();
+                }
+                $(window).resize(resizeFixed);
+                $(window).scroll(scrollFixed);
+                init();
+            });
+        };
+    })(jQuery);
+
+    $(document).ready(function () {
+        $("table").fixMe();
+        $(".up").click(function () {
+            $('html, body').animate({
+                scrollTop: 0
+            }, 2000);
+        });
+    });
+</script>
 
 
 

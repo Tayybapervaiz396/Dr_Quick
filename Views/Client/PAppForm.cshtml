@@ -14,7 +14,7 @@
     <div class="container" style=" background-color: #333; border-radius:5%; width:70% ; height:700%;  margin-top:8%; margin-bottom:6%">
         <h1 style="color:white; font-family:Gabriola;margin-left:34%; margin-bottom:3%">Online Appointment</h1>
 
-        <form action="/Client/Add" method="post"  style=" margin-bottom:2%; ">
+        <form action="/Client/Add" style=" margin-bottom:2%; ">
             <fieldset id="inputs">
                 <div class="row">
                     <div class="col-sm-4">
@@ -24,16 +24,16 @@
                         <input id="LastName" class="form-control contr" type="text" name="LastName" placeholder="Last Name*" required /><br />
                     </div>
                     <div class="col-sm-4 ">
-                        <input id="Email" class="form-control contr" type="text" name="Email" placeholder="Email*" required /><br />
+                        <input id="Email" class="form-control contr" type="email" name="Email" placeholder="Email*" required /><br />
                     </div>
 
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
-                        <input class="form-control contr" id="Password" name="Password" placeholder="Password*" type="password" /><br />
+                        <input class="form-control contr" id="Password" name="Password" placeholder="Password*" type="password" required/><br />
                     </div>
                     <div class="col-sm-4 ">
-                        <input id="PhoneNo" type="text" class="form-control contr" name="PhoneNo" placeholder=" Phone No*" required /><br />
+                        <input id="PhoneNo" type="tel" class="form-control contr" name="PhoneNo" placeholder=" Phone No*" required /><br />
                     </div>
                     <div class="col-sm-4 ">
                         <input id="Address" type="text" class="form-control contr" name="Address" placeholder="Address*" required><br />
@@ -44,14 +44,16 @@
 
                 <div class="row">
                     <div class="col-sm-4">
-                        <input id="DOBirth" class="form-control contr" type="date" name="DOBirth" placeholder=" Date of Birth*" required /><br />
+                        <input id="DOBirth" class="form-control contr" type="date" name="DOBirth"
+                                placeholder=" Date of Birth*" required /><br />
                     </div>
                     <div class="col-sm-4 ">
-                        <label style="color:white">Gender:</label>  &nbsp;<input type="radio" name="Gender" />
+                        <label style="color:white">Gender:</label>  &nbsp;
+                        <input type="radio" name="Gender" value="Female" />
                         <label style=" color:white">
                             Female
                         </label>
-                        <input type="radio" name="Gender" />&nbsp;<label style=" color:white"> Male</label>
+                        <input type="radio" name="Gender" id="Gender"  value="Male"/> &nbsp;<label style=" color:white"> Male</label>
 
                     </div>
                     <div class="col-sm-4 ">
@@ -63,29 +65,31 @@
                     <div class="col-sm-4">
 
 
-                        <select class=" form-control contr" id="MStatus" name="MStatus" style="width:96%; margin-left:3%">
+                        <select class=" form-control contr" id="MStatus" name="MStatus" required
+                                style="width:96%; margin-left:3%">
 
                             <option value="Martial">Martial Status</option>
-                            <option value="1">Single</option>
-                            <option value="2">Married</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
                         </select><br />
                     </div>
 
                     <div class="col-sm-4 ">
-                        <select class=" form-control contr" id="Departments" name="Departments" style="width:96%; margin-left:1%">
+                        <select class=" form-control contr" id="Departments" name="Departments"
+                              required   style="width:96%; margin-left:1%">
 
                             <option value="Department">Choose Department</option>
-                            <option value="1">Cardiology</option>
-                            <option value="2">Dentisry</option>
-                            <option value="3">Emergency Room</option>
-                            <option value="4">Surgury</option>
-                            <option value="5">Pediatrics</option>
-                            <option value="6">Laboratory</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Dentisry">Dentisry</option>
+                            <option value="Emergency Room">Emergency Room</option>
+                            <option value="Surgury">Surgury</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Laboratory">Laboratory</option>
                         </select><br />
                     </div>
 
                     <div class="col-sm-4">
-                        <input id="OfcNo" class="form-control contr" type="text" style="width:96%" name="OfcNo" placeholder="Office Phone No*" required /><br />
+                        <input id="OfcNo" class="form-control contr" type="tel" style="width:96%" name="OfcNo" placeholder="Office Phone No*" required /><br />
                     </div>
 
 
@@ -103,10 +107,12 @@
 
 
                     <div class="col-sm-4 " style="margin-left:-0.5%">
-                        <input id="GPhoneNo" class="form-control contr" type="text" name="GPhoneNo" style="width:96%" placeholder="Guardian Phone No*" required /><br />
+                        <input id="GPhoneNo" class="form-control contr" type="tel" name="GPhoneNo"
+                                style="width:96%" placeholder="Guardian Phone No*" required /><br />
                     </div>
                     <div class="col-sm-4" style="margin-left:1%">
-                        <input id="Occupation" class="form-control contr" type="text" style="width:96%" name="Occupation" placeholder="Occupation*" required /><br />
+                        <input id="Occupation" class="form-control contr" type="text" style="width:96%" 
+                               name="Occupation" placeholder="Occupation*" required /><br />
                     </div>
 
                 </div>
@@ -121,14 +127,6 @@
                         <input id="Responsible" class="form-control contr " type="text" name="Responsible" style="width:96%"
                                placeholder="Who is financially responsible for Doctor?*" required /><br />
                     </div>
-                    <div class="col-sm-4 " style="margin-left:-0.6%">
-                        <input id="ENo" class="form-control contr" type="text" style="width:96%" name="ENo" placeholder="Emergency No*" required /><br />
-                    </div>
-
-                </div>
-
-                <div class="row">
-
                     <div class="col-sm-4 " style="margin-left:-0.5%">
                         <input id="RelationToPatient" class="form-control contr" style="width:96%" type="text" name="RelationToPatient"
                                placeholder="Relationship To Patient*" required /><br />
@@ -138,57 +136,116 @@
 
 
 
-                <input type="submit" id="AppoSubmit" value="Register" style="margin-left:45%; width:12%; height:40px; text-align:center">
 
+                <input id="AppoSubmit" type="submit" value="AppoSubmit" style="margin-left:45%;
+  width:12%; height:40px; text-align:center"
+                       data-toggle="modal" data-target="#myModal">
 
-            </fieldset>
-        </form>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Status</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Your Appointment is Successfully Submitted</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+   
+
+    </fieldset>
+    </form>
     </div>
 
     <script lang="ja" type="text/javascript">
         $(document).ready(function () {
             $("#AppoSubmit").click(function () {
-                var FirstName = $("#FirsName").val();
-                var LastName = $("#LastName").val();
-                var Email = $("#Email").val();
-                var Password = $("#Password").val();
-                var PhoneNo = $("#PhoneNo").val();
-                var Address = $("#Address").val();
-                var DOBirth = $("#DOBirth").val();
-                var Gender = $("#Gender").val();3
-                var City = $("#City").val();
-                var MStatus = $("#MStatus").val();
-                var Departments = $("#Departments").val();
-                var OfcNo = $("#OfcNo").val();
-                var GName = $("#GName").val();
-                var GPhoneNo = $("#GPhoneNo").val(); 3
-                var Occupation = $("#Occupation").val();
-                var CDrName = $("#CDrName").val();
-                var esponsible = $("#Responsible").val();
-                var CRelationToPatient = $("#RelationToPatient").val();
-                
-                
-                
+                var My = $("#FirsName").val();
+                var Your = $("#LastName").val();
+                var Em = $("#Email").val();
+                var Pass = $("#Password").val();
+                var P = $("#PhoneNo").val();
+                var AH = $("#Address").val();
+                var DOB = $("#DOBirth").val();
+                var G = $("#Gender").val(); 3
+                var C = $("#City").val();
+                var MS = $("#MStatus").val();
+                var Dp = $("#Departments").val();
+                var Of = $("#OfcNo").val();
+                var Gn = $("#GName").val();
+                var Gp = $("#GPhoneNo").val(); 3
+                var Oc = $("#Occupation").val();
+                var Cdr = $("#CDrName").val();
+                var R = $("#Responsible").val();
+                var P = $("#RelationToPatient").val();
+                alert(My);
+                alert(Your);
+
                 $.ajax({
 
-                    url:"http://localhost:35003/api/APPOINTMENT",
+                    url: "http://localhost:35003/api/APPOINTMENT",
                     type: "Post",
-                    data: JSON.stringify({
-                        FirstName: FirstName, LastName: LastName, Email: Email, Password: Password, PhoneNo: PhoneNo,
-                        Address:Address, DOBirth:DOBirth,  Gender:Gender, 
-                        City: City, MStatus: MStatus, Departments: Departments, OfcNo: OfcNo, GName: GName,
-                        GPhoneNo: GPhoneNo, Occupation: Occupation, CDrName: CDrName, Responsible: Responsible,
-                        RelationToPatient: RelationToPatient
-                    }), //{ Name: name, Address: address, DOB: dob },
+                    data: JSON.stringify({ FirstName: My, LastName: Your, Email: Em, Password: Pass, PhoneNo: P, Address: AH, DOBirth: DOB, Gender: G, City: C, MStatus: MS, Departments: Dp, OfcNo: Of, GName: Gn, GPhoneNo: Gp, Occupation: Oc, CDrName: Cdr, Responsible: R, RelationTopatient: P }), //{ Name: name, Address: address, DOB: dob },
                     contentType: 'application/json; charset=utf-8',
                     success: function (data) {
-                        
+
                     },
-                   // error: function () { alert('error'); }
+                    // error: function () { alert('error'); }
                 });
             });
         });
 
+
+
+
+        //Get Code
+
+        $(document).ready(function () {
+
+            // code to read selected table row cell data (values).
+            $("#AppoSubmit").on('click', '#update', function () {
+
+                $("#table1").hide();
+                // get the current row
+                var currentRow = $(this).closest("tr");
+
+                var id = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+
+                var data = id; +
+                $.ajax({
+                    type: 'GET',
+                    url: "http://localhost:1848/api/formapi/" + data,
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        var str = "";
+
+                        str += "<form action='#' method='post'>";
+
+                        str += "<input type='text' id='email' value='" + data.Email + "'/>"
+                        str += "<input type='Password' id='pass' value='" + data.Password + "'/>"
+
+                        str += "<input type='submit' onclick='AppoSubmit' value='change' />"
+
+
+                        str += "</form>";
+
+                        $('#zaidi').html(str);
+                    },
+
+                    error: function (msg) { alert(msg); }
+
+
+                });
+            });
+        });
 
 
     </script>
@@ -197,3 +254,4 @@
 
 
 </body>
+

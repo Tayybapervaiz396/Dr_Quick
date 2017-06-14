@@ -10,14 +10,32 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="~/Content/custom.css" rel="stylesheet" />
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#linkClose').click(function () {
+            $('divError').modal('fade');
+        });
+
+
+        $('#SUButton').click(function () {
+            $('SuccessModal').modal('show');
+        });
+    });
+</script>
+
+
+
 <body style="background-color: rgba(81, 92, 82, 1);">
     <!-- ./container -->
     <div class="container" style=" background-color: #333; border-radius:5%; width:50% ;
  height:550%;  margin-top:8%; margin-bottom:6%">
         <h1>Sign Up  Here</h1>
 
-        <form action="/Main/Add" method="post" style="margin-top:1%; margin-bottom:2%; ">
+        <form action="/Main/Add" style="margin-top:1%; margin-bottom:2%; ">
             <fieldset id="inputs">
+
                 <div class="row">
                     <div class="col-sm-6">
                         <input id="FirstName" class="form-control" type="text" name="FirstName"
@@ -53,7 +71,7 @@
                 <label style=" color:white">
                     Female
                 </label>
-                <input type="radio" name="Gender" />&nbsp;<label style=" color:white"> Male</label>
+                <input type="radio" name="Gender" id="Gender" /> &nbsp;<label style=" color:white"> Male</label>
                 <br><br>
                 <div class="row">
                     <div class="col-sm-6">
@@ -68,91 +86,235 @@
 
                 <input id="DOBirth" class="form-control" type="date" style="width: 100%; " name="DOBirth" placeholder=" Date of Birth*" required /><br />
 
-                <button type="submit" id="SUButton" value="SignUp" style=" margin-left:45%; margin-bottom:2%; border-radius: 10px; font-family: Gabriola;
+                <button type="submit" id="SUButton" value="SUButton" style=" margin-left:45%; margin-bottom:2%; border-radius: 10px; font-family: Gabriola;
                   color: rgba(194, 112, 76, 1); font-size:25px; border: solid double">
                     Register
                 </button>
             </fieldset>
         </form>
+        <!--Model code-->
+
+        <div class="modal fade" tabindex="-1" id="SuccessModal" data-keyboard="false" data-backdrop="static" >
+            <div class="modal-dialog modal-sm "  >
+                <div class="modal content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                        <h4>Success</h4>
+                        <div class="modal-body">
+                            <h2>Registeration SuccessFull</h2>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="divError" class="alert alert-danger collapse" >
+                <a id="linkClose" class="close" href="#" >&times;</a>
+                <div id="divErrorText"></div>
+            </div>
+        </div>
+
+
+
+
+
+
+
     </div>
     <script lang="ja" type="text/javascript">
         $(document).ready(function () {
+            $('#linkClose').click(function () {
+                $('divError').modal('fade');
+            });
+
             $("#SUButton").click(function () {
-                var FirstName = $("#FirstName").val();
-                var LastName = $("#LastName").val();
-                var Password = $("#Password").val();
-                var CPassword = $("#CPassword").val();
-                var Email = $("#Email").val();
-                var Address = $("#Address").val();
-                var Gender = $("#Gender").val();
-                var PhoneNo = $("#PhoneNo").val();
-                var City = $("#City").val();
-                var DOBirth = $("#DOBirth").val();
-                //alert(FirstName);
-                //alert(LastName);
-                //alert(Password);
-               // alert(CPassword);
-               // alert(Email);
+                var a = $("#FirstName").val();
+                var b = $("#LastName").val();
+                var c = $("#Password").val();
+                var d = $("#CPassword").val();
+                var e = $("#Email").val();
+                var f = $("#Address").val();
+                var g = $("#Gender").val();
+                var h = $("#PhoneNo").val();
+                var i = $("#City").val();
+                var j = $("#DOBirth").val();
+             
+                alert(a);
+                alert(b);
+                // alert(Email);
                 //alert(Address);
                 //alert(Gender);
-               // alert(PhoneNo);
-               // alert(City);
-               // alert(DOBirth);
-               
+                // alert(PhoneNo);
+                // alert(City);
+                // alert(DOBirth);
+
                 $.ajax({
 
-                    url:"http://localhost:35003/api/SIGNUP",
+                    url: "http://localhost:35003/api/SIGNUP/",
                     type: "Post",
-                    data: JSON.stringify({FirstName:FirstName, LastName:LastName, Password:Password,
-                        CPassword:CPassword, Email:Email, Address:Address, Gender:Gender, PhoneNo:PhoneNo,
-                        City:City, DOBirth:DOBirth}), //{ Name: name, Address: address, DOB: dob },
+                    data: JSON.stringify({
+                        FirstName: a, LastName: b, Password: c,
+                        CPassword: d, Email: e, Address: f, Gender: g, PhoneNo: h,
+                        City: i, DOBirth: j
+                    }), //{ Name: name, Address: address, DOB: dob },
                     contentType: 'application/json; charset=utf-8',
                     success: function (data) {
-               
+
                     },
-                   // error: function () { alert('error'); }
+                    success: function () {
+                        $('SuccessModal').modal('show');
+                    },
+                    error: function (jqXHR) {
+                        $('divErrorText').text(jqXHR.responseText);
+                        $('divError').show('fade');
+                    }
+                    
                 });
+               
             });
         });
 
-       
-      
-    </script>
-</body>
-<!--
-     $(document).ready(function () {
-            $.ajax({
-                url: "http://localhost:35003/api/Admin",
-                type: "Get",
-                datatype:'json',
-                success: function (data) {
-                    console.log(data);
-                    var str="";
-                    for (var i = 0; i < data.length; i++)
-                    {
-                        str +="<tr>";
-                        str +="<td id='r"+ i +"'>" + data[i].FirstName + "</td>"
-                        str +="<td id='r"+ i+" '>" + data[i].LastName + "</td>"
-                        str +="<td id='r"+i+"'>"   + data[i].Password + "</td><td>"
-                        str +="<td id='r"+i+"'>"   + data[i].CPassword + "</td></tr>"
-                        str +="<td id='r"+ i +"'>" + data[i].Email + "</td>"
-                        str +="<td id='r"+ i+" '>" + data[i].Address + "</td>"
-                        str +="<td id='r"+i+"'>"   + data[i].Gender + "</td><td>"
-                        str +="<td id='r"+i+"'>"   + data[i].PhoneNo + "</td></tr>"
-                        str +="<td id='r"+i+"'>"   + data[i].City + "</td><td>"
-                        str +="<td id='r"+i+"'>"   + data[i].DOBirth + "</td></tr>"
-                        str +="</td>"
+        $(document).ready(function () {
 
-                        str += " + data[i].DOB + "</td></tr>").appendTo("#tbPerson");
+            // code to read selected table row cell data (values).
+            $("#SignIn").on('click', '#update', function () {
 
-                        str +=
-                                    <input type="submit" class="button" value="Sign In" id="Submit">
-                                 "
-                        str +="<a href='" +data[i].Id+" '>Update</a>" ;
-                    }
-                    $('#abc').html(str);
-                },
-                error: function (msg) { alert(msg); }
+                $("#table1").hide();
+                // get the current row
+                var currentRow = $(this).closest("tr");
+
+                var id = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+
+                var data = id; +
+                $.ajax({
+                    type: 'GET',
+                    url: "http://localhost:35003/api/SIGNUP/" + data,
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        var str = "";
+
+                        str += "<form action='#' method='post'>";
+
+                        str += "<input type='text' id='Email' value='" + data.Email + "'/>"
+                        str += "<input type='Password' id='Password' value='" + data.Password + "'/>"
+
+                        str += "<input type='submit' onclick='SignIn' value='change' />"
+
+
+                        str += "</form>";
+
+                        $('#zaidi').html(str);
+                    },
+
+                    error: function (msg) { alert(msg); }
+
+
+                });
             });
-     });
--->
+        });
+       
+
+    </script>
+
+
+  
+
+
+
+    <!--Get Code
+
+    $(document).ready(function () {
+    $.ajax({
+    url: "http://localhost:35003/api/SIGNUP/",
+    type: "Get",
+    datatype:'json',
+    success: function (data) {
+    console.log(data);
+    var str="";
+    for (var i = 0; i < data.length; i++)
+    {
+    str +="<tr>
+        ";
+        str +="
+        <td id='r"+ i +"'>" + data[i].FirstName + "</td>"
+        str +="
+        <td id='r"+ i+" '>" + data[i].LastName + "</td>"
+        str +="
+        <td id='r"+i+"'>"   + data[i].Password + "</td>
+        <td>
+            "
+            str +="
+        <td id='r"+i+"'>"   + data[i].CPassword + "</td>
+   "
+    str +="<td id='r"+ i +"'>" + data[i].Email + "</td>"
+    str +="<td id='r"+ i+" '>" + data[i].Address + "</td>"
+    str +="<td id='r"+i+"'>"   + data[i].Gender + "</td><td>
+        "
+        str +="
+    <td id='r"+i+"'>"   + data[i].PhoneNo + "</td>"
+    str +="<td id='r"+i+"'>"   + data[i].City + "</td>"
+        str +="
+    <td id='r"+i+"'>"   + data[i].DOBirth + "</td>"
+    "
+
+    str += " 
+               <td id='r"+i+"'>"  data[i].DOB + "</td></tr>").appendTo("#SignUpTable");
+
+    str +=
+    <input type="submit" class="button" value="Sign In" id="Submit">
+    "
+    str +="<a href='" +data[i].Id+" '>Update</a>" ;
+    }
+    $('#abc').html(str);
+    },
+    error: function (msg) { alert(msg); }
+    });
+    });
+
+        -->
+
+
+    //Me Get Code
+    <!--
+   
+    -->
+
+
+
+
+    <!--Delete Code -->
+
+    <script>
+        $(document).ready(function () {
+            $("#deleteApi").click(function () {
+                // debugger;
+                var id = $("#Id").val();
+                $.ajax({
+                    url: "http://localhost:35003/api/SIGNUP/" + id,
+                    type: "Delete",
+                    success: function (data) {
+                        alert('Deleted Successfully');
+                        window.location.href = "/Admin/PAppForm";
+                    },
+                    error: function (msg) { alert(msg); }
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+</body>

@@ -27,24 +27,19 @@
                             <th>City</th>
                             <th>Martial Status</th>
                             <th>Department</th>
-                            <th>Ward No</th>
+                         
                             <th>Office No</th>
-                            <th>Emergency No</th>
-
                             <th>Guardian Name</th>
                             <th>Guardian Phone No</th>
 
-                            
-                            
+
+
                             <th>Occupation</th>
                             <th>Consulting dr.name </th>
-                            
-                            <th>Bed No</th>
-                            
-                            
-                           
-                            <th> responsible for patient?</th>
-                            <th>Emergency Phone No</th>
+                           >
+
+                            <th> Responsible for patient?</th>
+                            <th>Emergency No</th>
                             <th>Relationship to patient</th>
                             <th>Action</th>
 
@@ -52,6 +47,53 @@
                     </thead>
                 <tbody>
                      
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+
+                            <td>@x.FirstName</td>
+                            <td>@x.LastName</td>
+                            <td>@x.Email</td>
+                            <td>@x.Password</td>
+                            <td>@x.PhoneNo</td>
+                            <td>@x.Address</td>
+                            <td>@x.DOBirth</td>
+                            <td>@x.Gender</td>
+
+                            <td>@x.City</td>
+                            <td>@x.MartialStatus</td>
+                            <td>@x.Department</td>
+                      
+                            <td>@x.OfcNo</td>
+                            <td>@x.GuardianName</td>
+                            <td>@x.GPhone</td>
+                            <td>@x.Occupation</td>
+                            <td>@x.ConsultingDrName</td>
+                          
+                            <td>@x.Responsible</td>
+                            <td>@x.EmergencyNo</td>
+                            <td>@x.Relationship</td>
+
+
+                            <td>
+                                <div class="btn-group">
+                                    <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                        <span> Option</span>
+                                    </button>
+                                    <ul class="dropdown-menu stay-open pull-right" role="menu" style="padding: 15px; min-width: 100px;">
+                                        <li><button id="EditApi" type="submit">Update</button></li>
+                                        <li><button id="deleteApi" type="submit" onclick="deleteApi">Delete</button></li>
+
+
+                                    </ul>
+
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+
+
                     </tbody> 
                 </table>
 
